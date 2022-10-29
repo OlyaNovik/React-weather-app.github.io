@@ -2,12 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import s  from "../Header/Header.module.scss"
+import { storage } from "../Storage/Storage";
 import { GlobalSvgSelector   } from "../Style/GlobalSvgSelector";
 
 const Header = ()=>{
 
-const [theme,setTheme] = useState('light')
-
+const [theme,setTheme] = useState(storage.getItem('theme') || 'light')
+storage.setItem('theme', theme);
 
 function ChangeTheme(){
   setTheme(theme === 'light' ? 'dark' : 'light')
