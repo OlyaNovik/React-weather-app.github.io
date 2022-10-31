@@ -3,7 +3,7 @@ import { useEffect, useState} from "react";
 import s from './ThisDay.module.scss'
 import { GlobalSvgSelector } from "../../../../Style/GlobalSvgSelector";
 
-const ThisDay =()=>{
+const ThisDay =(props)=>{
     // const timeNow = new Date().toLocaleTimeString();
 
     const [timeNow,setTimeNow] = useState()
@@ -16,13 +16,12 @@ const ThisDay =()=>{
     }, []);
 
 
-
     return(
         <div className={s.this__day}>
       <div className={s.top__block}>
         <div className={s.top__block_wrapper}>
-          <div className={s.this__temp}>20°</div>
-          <div className={s.this__day_name}>Сегодня</div>
+          <div className={s.this__temp}>{props.tempG}°</div>
+          <div className={s.this__day_name}>Сьогодні</div>
         </div>
         <GlobalSvgSelector id="sun" />
       </div>
@@ -31,7 +30,7 @@ const ThisDay =()=>{
           Час: <span>{timeNow}</span>
         </div>
         <div className={s.this__city}>
-          Місто: <span>Львів</span>
+          Місто: <span>{props.city}</span>
         </div>
       </div>
     </div>
