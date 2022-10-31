@@ -79,7 +79,7 @@ useEffect(()=>{
         sunrise={sunrise}
         sunset={sunset}
         error={error}
-        />
+       />
         </div>
     )
 }

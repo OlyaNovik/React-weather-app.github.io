@@ -4,7 +4,6 @@ import s from './ThisDay.module.scss'
 import { GlobalSvgSelector } from "../../../../Style/GlobalSvgSelector";
 
 const ThisDay =(props)=>{
-    // const timeNow = new Date().toLocaleTimeString();
 
     const [timeNow,setTimeNow] = useState()
     useEffect(() => {
@@ -34,7 +33,7 @@ const ThisDay =(props)=>{
         </div>
       </div>
     </div>
-    )
-}
+
+    )}
 
 export default ThisDay
