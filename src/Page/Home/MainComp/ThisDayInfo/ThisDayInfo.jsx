@@ -9,22 +9,22 @@ export const ThisDayInfo = (props) => {
     {
       icon_id: 'temp',
       name: 'Температура',
-      value: '20° - ощущается как 17°',
+      value: `${props.tempG}° - відчувається як ${props.tempFeel}°`,
     },
     {
       icon_id: 'pressure',
       name: 'Тиск',
-      value: '765 мм ртутного столба - нормальное',
+      value: `${props.pressure} мм ртутного стовпчика`,
     },
     {
       icon_id: 'precipitation',
-      name: 'Опади',
-      value: 'Без осадков',
+      name: 'Вологість',
+      value: `${props.humidity}%`,
     },
     {
       icon_id: 'wind',
       name: 'Вітер',
-      value: '3 м/с юго-запад - легкий ветер',
+      value: `${props.wind} м/с`,
     },
   ];
   return (

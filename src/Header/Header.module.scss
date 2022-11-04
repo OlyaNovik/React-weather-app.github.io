@@ -30,6 +30,7 @@
     cursor: pointer;
 }
 .search_input{
+    color:var(#{--text-color-default});
     border: none;
     width: 150px;
     height:30px;

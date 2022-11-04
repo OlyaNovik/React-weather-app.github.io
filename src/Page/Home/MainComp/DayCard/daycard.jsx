@@ -1,74 +1,94 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Card } from './card';
 
 import s from './daycard.module.scss';
 import { Tabs } from './tabs';
 
 export const Days = (props) => {
+  let forecast = props.forecast;
+  let date =[];
+  let maxTemp = [];
+  let minTemp =[];
+  let textWeather = [];
+  let day =[];
+ 
+  let dataArray = forecast.map((e)=>{
+    date.push(e.date)
+    let sliceDay = new Date(e.date).toString();
+    let DayText = sliceDay.split(' ', 1);
+    day.push(DayText)
+    maxTemp.push(e.day.maxtemp_c)
+    minTemp.push(e.day.mintemp_c)
+    textWeather.push(e.day.condition.text)
+  
+  })
+  
   const days = [
     {
-      day: 'Сегодня',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
+      day: 'Today',
+      day_info: date[0],
+      icon_id: textWeather[0],
+      temp_day: `${maxTemp[0]}°`,
+      temp_night: `${minTemp[0]}°`,
+      info: textWeather[0],
     },
     {
-      day: 'Завтра',
-      day_info: '29 авг',
-      icon_id: 'small_rain_sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'небольшой дождь и солнце',
+      day: day[1],
+      day_info: date[1],
+      icon_id: textWeather[1],
+      temp_day: `${maxTemp[1]}°`,
+      temp_night: `${minTemp[1]}°`,
+      info: textWeather[1],
     },
     {
-      day: 'Ср',
-      day_info: '30 авг',
-      icon_id: 'small_rain',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'небольшой дождь',
+      day: day[2],
+      day_info: date[2],
+      icon_id: textWeather[2],
+      temp_day: `${maxTemp[2]}°`,
+      temp_night: `${minTemp[2]}°`,
+      info: textWeather[2],
     },
     {
-      day: 'Чт',
-      day_info: '28 авг',
-      icon_id: 'mainly_cloudy',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
+      day: day[3],
+      day_info: date[3],
+      icon_id: textWeather[3],
+      temp_day: `${maxTemp[3]}°`,
+      temp_night: `${minTemp[3]}°`,
+      info: textWeather[3],
     },
     {
-      day: 'Пт',
-      day_info: '28 авг',
-      icon_id: 'rain',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
+      day: day[4],
+      day_info: date[4],
+      icon_id: textWeather[4],
+      temp_day: `${maxTemp[4]}°`,
+      temp_night: `${minTemp[4]}°`,
+      info: textWeather[4],
     },
     {
-      day: 'Сб',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
+      day: day[5],
+      day_info: date[5],
+      icon_id: textWeather[5],
+      temp_day: `${maxTemp[5]}°`,
+      temp_night: `${minTemp[5]}°`,
+      info: textWeather[5],
     },
     {
-      day: 'Вс',
-      day_info: '28 авг',
-      icon_id: 'sun',
-      temp_day: '+18',
-      temp_night: '+15',
-      info: 'Облачно',
+      day: day[6],
+      day_info: date[6],
+      icon_id: textWeather[6],
+      temp_day: `${maxTemp[6]}°`,
+      temp_night: `${minTemp[6]}°`,
+      info: textWeather[6],
     },
   ];
+
   return (
     <>
       <Tabs />
       <div className={s.days}>
-        {days.map((day) => (
-          <Card day={day} key={day.day} />
+        {days.map((day,index) => (
+          <Card day={day} key={index} />
         ))}
       </div>
     </>
