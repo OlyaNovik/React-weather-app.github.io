@@ -32,8 +32,10 @@
 .search_input{
     color:var(#{--text-color-default});
     border: none;
-    width: 150px;
-    height:30px;
+    font-size: 20px;
+    padding-left: 15px;
+    width: 250px;
+    height:35px;
     background-color: var(#{--card-background-default});
     border-radius:8px;
     
