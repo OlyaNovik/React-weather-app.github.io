@@ -3,28 +3,31 @@ import React from 'react';
 import s from './ThisDayInfo.module.scss';
 import cloud from '../../../../Image/Cloud.png';
 import { ThisDayItem } from './ThisDayItem';
+import { useSelector } from "react-redux";
 
 export const ThisDayInfo = (props) => {
+  const weather = useSelector((state)=> state.weather?.items?.current)
+
   const items = [
     {
       icon_id: 'temp',
-      name: 'Температура',
-      value: `${props.tempG}° - відчувається як ${props.tempFeel}°`,
+      name: 'Temperature',
+      value: `${weather?.temp_c}° - feels like ${weather?.feelslike_c}°`,
     },
     {
       icon_id: 'pressure',
-      name: 'Тиск',
-      value: `${props.pressure} мм ртутного стовпчика`,
+      name: 'Pressure',
+      value: `${weather?.pressure_mb} мм mercury column`,
     },
     {
       icon_id: 'precipitation',
-      name: 'Вологість',
-      value: `${props.humidity}%`,
+      name: 'Humidity',
+      value: `${weather?.humidity}%`,
     },
     {
       icon_id: 'wind',
-      name: 'Вітер',
-      value: `${props.wind} м/с`,
+      name: 'Wind',
+      value: `${weather?.wind_mph} m/s`,
     },
   ];
   return (

@@ -8,10 +8,10 @@ export const Tabs = (props) => {
     <div className={s.tabs}>
       <div className={s.tabs__wrapper}>
           <div className={s.tab}>
-            На неділю
+            On the weeks
           </div>
       </div>
-      <div className={s.cancel}>Відмінити</div>
+      <div className={s.cancel}>Close</div>
     </div>
   );
 };

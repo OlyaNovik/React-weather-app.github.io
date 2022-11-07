@@ -4,23 +4,25 @@ import { Card } from './card';
 
 import s from './daycard.module.scss';
 import { Tabs } from './tabs';
+import { useSelector } from "react-redux";
+
 
 export const Days = (props) => {
-  let forecast = props.forecast;
+  const forecast = useSelector((state)=>state.weather.items?.forecast?.forecastday)
   let date =[];
   let maxTemp = [];
   let minTemp =[];
   let textWeather = [];
   let day =[];
  
-  let dataArray = forecast.map((e)=>{
-    date.push(e.date)
-    let sliceDay = new Date(e.date).toString();
+  let dataArray = forecast?.map((e)=>{
+    date.push(e?.date)
+    let sliceDay = new Date(e?.date).toString();
     let DayText = sliceDay.split(' ', 1);
     day.push(DayText)
-    maxTemp.push(e.day.maxtemp_c)
-    minTemp.push(e.day.mintemp_c)
-    textWeather.push(e.day.condition.text)
+    maxTemp.push(e?.day?.maxtemp_c)
+    minTemp.push(e?.day?.mintemp_c)
+    textWeather.push(e?.day?.condition?.text)
   
   })
   
@@ -82,13 +84,16 @@ export const Days = (props) => {
       info: textWeather[6],
     },
   ];
-
+  const  ApearTab = ()=>{
+    console.log('click');
+    document.querySelector('#apear').style = 'flex';
+  }
   return (
     <>
       <Tabs />
       <div className={s.days}>
         {days.map((day,index) => (
-          <Card day={day} key={index} />
+          <Card  day={day} key={index} />
         ))}
       </div>
     </>

@@ -3,55 +3,41 @@ import { useEffect, useState} from "react";
 import s from './ThisDay.module.scss'
 import { GlobalSvgSelector } from "../../../../Style/GlobalSvgSelector";
 import ClockBlock from "./ClockBlock";
+import { useSelector } from "react-redux";
 
 const ThisDay =(props)=>{
     const [imgtext, setImgText] = useState('sun');
-    // const [timeNow,setTimeNow] = useState();
-   let time = props.time;
-   let city = props.city;
-   let country =props.country;
-    // useEffect(() => {
-    //     let secTimer = setInterval( () => {
-    //         setTimeNow(new Date().toLocaleTimeString())
-    //     },1000)
-    
-    //     return () => clearInterval(secTimer);
-    // }, [timeNow]);
+   const current = useSelector((state)=> state.weather?.items?.current)
 
     useEffect(()=>{
-      if(props.textWeather === 'Sunny'){
+      if(current?.condition?.text === 'Sunny'){
         setImgText(prev=> prev = 'sun')
       }
-      else if(props.textWeather === 'Partly cloudy'){
+      else if(current?.condition?.text === 'Partly cloudy'){
         setImgText(prev=> prev = 'mainly_cloudy')
       }
-      else if(props.textWeather === 'Light rain'){
+      else if(current?.condition?.text === 'Light rain'){
         setImgText(prev=> prev = 'small_rain_sun')
       }
-      else if(props.textWeather === 'Mist'){
+      else if(current?.condition?.text === 'Mist'){
         setImgText(prev=> prev = 'mainly_cloudy')
       }
-      else if(props.textWeather === 'Patchy rain possible'){
+      else if(current?.condition?.text === 'Patchy rain possible'){
         setImgText(prev=> prev = 'small_rain')
       }
   
-      
-    }, [props.textWeather])
+    }, [])
 
     return(
         <div className={s.this__day}>
       <div className={s.top__block}>
         <div className={s.top__block_wrapper}>
-          <div className={s.this__temp}>{props.tempG}°</div>
+          <div className={s.this__temp}>{Math.trunc(current?.temp_c)}°</div>
           <div className={s.this__day_name}>Today</div>
         </div>
         <GlobalSvgSelector id={imgtext}/>
       </div>
-      <ClockBlock
-      city ={city}
-      country={country}
-      time={time}
-      />
+      <ClockBlock/>
     </div>
 
     )}

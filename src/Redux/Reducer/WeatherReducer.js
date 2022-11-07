@@ -1,7 +1,10 @@
 import {WeatherReducerType} from './WeatherReducerType'
 
 const initialState = {
-    items: {},
+    items: {
+    current: {temp_c: 0,feelslike_c: 0,pressure_mb:0,humidity:0,wind_mph:0},
+    location:{name:'City',country:'Country',localtime:'00:00'},
+},
     error: null,
     loading: false
 }
