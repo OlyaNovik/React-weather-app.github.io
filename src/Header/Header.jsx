@@ -10,22 +10,33 @@ import { WeatherAction } from '../Redux/Action/WeatherAction'
 
 const Header = () => {
   const dispatch = useDispatch();
-  const error = useSelector((state)=> state.weather.items)
-  const Api_Key2 = "2a3cd426029b4cc5aa9104658220111"
-  const gettingWeather = async (event) => {
-    event.preventDefault();
-    const city = event.target.elements.city.value;
-    // console.log(city);
-    if(city){
-    const api_url =
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${Api_Key2}&q=${city}&days=7&aqi=no&alerts=no`)
-    .then((data)=> data.json()
+  const error = useSelector((state)=> state.weather.items?.error)
+  const Api_Key = "2a3cd426029b4cc5aa9104658220111";
+ 
+  useEffect(()=>{
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${Api_Key}&q=$Kiev&days=7&aqi=no&alerts=no`)
+    .then((data)=> data.json())
     .then((data) => dispatch(WeatherAction.addWeather(data)))
+  }, [error])
+  
+  const gettingWeather = (event) => {
+    const city = event.target.elements.city.value;
+    event.preventDefault();
+    if(city){
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${Api_Key}&q=${city}&days=7&aqi=no&alerts=no`)
+    .then((data)=> data.json())
+    .then((data) => {
+      dispatch(WeatherAction.addWeather(data))    
+    })
     .catch((error) => {
-      alert(error);
-      console.error('Error:', error);
-    }) )  }
+      console.error(error);
+    })
+   }
+   document.querySelector('#form').reset();
   }
+
+  
+
   const [theme, setTheme] = useState(storage.getItem('theme') || 'light')
   storage.setItem('theme', theme);
 
@@ -47,7 +58,6 @@ const Header = () => {
       root.style.setProperty(`--${component}-default`, `var(--${component}-${theme})`)
     }, [theme])
   })
-
   return (
     <div>
       <div className="header">
@@ -62,7 +72,7 @@ const Header = () => {
             <div className={s.change_theme} onClick={ChangeTheme}>
               <GlobalSvgSelector id="change-theme" />
             </div>
-            <form onSubmit={gettingWeather}>
+         <form id="form" onSubmit={gettingWeather}>
               <input type="text" name="city" placeholder="  Search..." id="inp" className={s.search_input} />
             </form>
           </div>

@@ -84,10 +84,7 @@ export const Days = (props) => {
       info: textWeather[6],
     },
   ];
-  const  ApearTab = ()=>{
-    console.log('click');
-    document.querySelector('#apear').style = 'flex';
-  }
+
   return (
     <>
       <Tabs />
