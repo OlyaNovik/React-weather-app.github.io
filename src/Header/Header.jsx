@@ -8,11 +8,10 @@ import { GlobalSvgSelector } from "../Style/GlobalSvgSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { WeatherAction } from '../Redux/Action/WeatherAction'
 
-const Header = () => {
+const MAIN = () => {
   const dispatch = useDispatch();
   const error = useSelector((state)=> state.weather.items?.error)
-  const Api_Key = "2a3cd426029b4cc5aa9104658220111";
- 
+  const Api_Key = "d1076bd416434ede895140646221511";
   useEffect(()=>{
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${Api_Key}&q=$Kiev&days=7&aqi=no&alerts=no`)
     .then((data)=> data.json())
@@ -34,8 +33,6 @@ const Header = () => {
    }
    document.querySelector('#form').reset();
   }
-
-  
 
   const [theme, setTheme] = useState(storage.getItem('theme') || 'light')
   storage.setItem('theme', theme);
@@ -83,4 +80,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default MAIN;

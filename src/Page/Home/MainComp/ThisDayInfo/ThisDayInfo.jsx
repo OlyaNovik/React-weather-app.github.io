@@ -1,5 +1,4 @@
-import React from 'react';
-// import Select from 'react-select';
+
 import s from './ThisDayInfo.module.scss';
 import cloud from '../../../../Image/Cloud.png';
 import { ThisDayItem } from './ThisDayItem';
@@ -37,7 +36,7 @@ export const ThisDayInfo = (props) => {
           <ThisDayItem key={item.icon_id} item={item} />
         ))}
       </div>
-      <img className={s.cloud__img} src={cloud} alt="облако" />
+      <img className={s.cloud__img} src={cloud} alt="хмара" />
     </div>
   );
 };

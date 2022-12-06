@@ -1,13 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Card } from './card';
-
 import s from './daycard.module.scss';
-import { Tabs } from './tabs';
 import { useSelector } from "react-redux";
 
-
-export const Days = (props) => {
+export const Days = () => {
   const forecast = useSelector((state)=>state.weather.items?.forecast?.forecastday)
   let date =[];
   let maxTemp = [];
@@ -23,7 +19,6 @@ export const Days = (props) => {
     maxTemp.push(e?.day?.maxtemp_c)
     minTemp.push(e?.day?.mintemp_c)
     textWeather.push(e?.day?.condition?.text)
-  
   })
   
   const days = [
@@ -87,7 +82,6 @@ export const Days = (props) => {
 
   return (
     <>
-      <Tabs />
       <div className={s.days}>
         {days.map((day,index) => (
           <Card  day={day} key={index} />

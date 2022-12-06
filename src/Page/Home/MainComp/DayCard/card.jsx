@@ -13,10 +13,31 @@ export const Card = (props) => {
     else if(props.day.icon_id === 'Partly cloudy'){
       setImgText(prev=> prev = 'mainly_cloudy')
     }
+    else if(props.day.icon_id === 'Light freezing'){
+      setImgText(prev=> prev = 'Lightsnow')
+    }
+    else if(props.day.icon_id === 'Light snow'){
+      setImgText(prev=> prev = 'Lightsnow')
+    }
+    else if(props.day.icon_id === 'Heavy snow'){
+      setImgText(prev=> prev = 'snow')
+    }
+    else if(props.day.icon_id === 'Moderate snow'){
+      setImgText(prev=> prev = 'snow')
+    }
+    else if(props.day.icon_id === 'Moderate or heavy snow showers'){
+      setImgText(prev=> prev = 'snow')
+    }
+    else if(props.day.icon_id === 'Light drizzle'){
+      setImgText(prev=> prev = 'Lightsnow')
+    }
     else if(props.day.icon_id === 'Light rain'){
       setImgText(prev=> prev = 'small_rain_sun')
     }
     else if(props.day.icon_id === 'Mist'){
+      setImgText(prev=> prev = 'mainly_cloudy')
+    }
+    else if(props.day.icon_id === 'Cloudy'){
       setImgText(prev=> prev = 'mainly_cloudy')
     }
     else if(props.day.icon_id === 'Patchy rain possible'){
@@ -27,10 +48,8 @@ export const Card = (props) => {
     }
     else if(props.day.icon_id === 'Moderate rain'){
       setImgText(prev=> prev = 'rain')
-    }
-    
-    
-  })
+    }   
+  },[props.day.icon_id])
   return (
     <div className={s.card}>
       <div className={s.day}>{props.day.day}</div>

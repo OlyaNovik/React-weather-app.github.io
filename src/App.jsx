@@ -1,4 +1,4 @@
-import Header from './Header/Header';
+import MAIN from './Header/Header';
 import './App.scss';
 import React from 'react';
 
@@ -7,7 +7,7 @@ import React from 'react';
   render(){
     return(
       <div className="Container">
-          <Header/>  
+          <MAIN/>  
          </div>
     )
   }
