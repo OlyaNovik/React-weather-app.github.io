@@ -38,7 +38,7 @@ export const Card = (props) => {
       setImgText(prev=> prev = 'mainly_cloudy')
     }
     else if(props.day.icon_id === 'Cloudy'){
-      setImgText(prev=> prev = 'mainly_cloudy')
+      setImgText(prev=> prev = 'mainly_clounpm stdy')
     }
     else if(props.day.icon_id === 'Patchy rain possible'){
       setImgText(prev=> prev = 'small_rain')
